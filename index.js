@@ -1,8 +1,32 @@
-const express = require('express')
-const app = express()
-const outputjson = {'choko':'lava'}
+// *** main dependencies *** //
+var express = require('express');
+var http = require('http');
+var bodyParser = require('body-parser')
 
+// *** express instance *** //
+var app = express();
+app.use(bodyParser.json());
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
-app.get('/choko', (req, res) => res.send(outputjson))
+app.get('/fetch-rooms/:societyid', function(req, res, next){
+  var response = {
+  	"A": [
+  		"A-101",
+  		"A-102",
+  		"A-103"
+  	],
+  	"B": [
+  		"B-101",
+  		"B-201",
+  		"B-301"
+  	]
+  };
+  res.send(response);
+});
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(process.env.PORT || 3000);
+
