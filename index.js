@@ -13,18 +13,24 @@ app.use(function(req, res, next) {
 });
 
 app.get('/fetch-rooms/:societyid', function(req, res, next){
-  var response = {
-  	"A": [
-  		"A-101",
-  		"A-102",
-  		"A-103"
-  	],
-  	"B": [
-  		"B-101",
-  		"B-201",
-  		"B-301"
-  	]
-  };
+  var response = [
+  {
+    "wingName": "A",
+    "rooms": [
+      "A-101",
+      "A-102",
+      "A-103"
+    ]
+  },
+  {
+    "wingName": "B",
+    "rooms": [
+      "B-101",
+      "B-102",
+      "B-103"
+    ]
+  }
+];
   res.send(response);
 });
 
