@@ -34,5 +34,21 @@ app.get('/fetch-rooms/:societyid', function(req, res, next){
   res.send(response);
 });
 
+app.get('/fetch-payment-details', function(req, res, next){
+  var response = [
+  {
+    "date": "16-Feb-18",
+    "desc": "hmm",
+    "amount": "570/-" 
+  },
+  {
+    "date": "15-Jan-18",
+    "desc": "ohh",
+    "amount": "570/-" 
+  }
+];
+  res.send(response);
+});
+
 app.listen(process.env.PORT || 3000);
 
